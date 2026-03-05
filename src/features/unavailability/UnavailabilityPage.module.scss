@@ -1,0 +1,152 @@
+@use 'sass:color';
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.container {
+  @include page-container;
+}
+
+.pageHeader {
+  margin-bottom: 24px;
+
+  h2 {
+    @include section-title;
+  }
+
+  p {
+    color: $text-secondary;
+    font-size: 0.9rem;
+  }
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  align-items: start;
+
+  @include respond-to(desktop) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.formCard {
+  @include card;
+  padding: 28px;
+
+  @include respond-to(mobile) {
+    padding: 20px;
+  }
+}
+
+.cardTitle {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: $text-primary;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  svg {
+    color: $blocked-color;
+    font-size: 22px;
+  }
+}
+
+.fieldGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.timeRow {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+
+  .dash {
+    color: $text-muted;
+    font-weight: 500;
+  }
+
+  @include respond-to(mobile) {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+}
+
+.submitRow {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 8px;
+}
+
+// Blocked slots list
+.listCard {
+  @include card;
+  padding: 28px;
+
+  @include respond-to(mobile) {
+    padding: 20px;
+  }
+}
+
+.emptyState {
+  text-align: center;
+  padding: 40px 20px;
+  color: $text-muted;
+
+  svg {
+    font-size: 48px;
+    margin-bottom: 12px;
+    opacity: 0.5;
+  }
+
+  p {
+    font-size: 0.9rem;
+  }
+}
+
+.blockedItem {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: 14px 16px;
+  border-radius: $border-radius-sm;
+  background: $blocked-bg;
+  margin-bottom: 10px;
+  transition: background $transition-fast;
+
+  &:hover {
+    background: color.adjust($blocked-bg, $lightness: -3%);
+  }
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.blockedInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+
+  .doctorName {
+    font-weight: 600;
+    font-size: 0.92rem;
+    color: $text-primary;
+  }
+
+  .slotInfo {
+    font-size: 0.82rem;
+    color: $text-secondary;
+  }
+
+  .reason {
+    font-size: 0.8rem;
+    color: $text-muted;
+    font-style: italic;
+    margin-top: 2px;
+  }
+}

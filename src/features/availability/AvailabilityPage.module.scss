@@ -1,0 +1,192 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.container {
+  @include page-container;
+}
+
+.pageHeader {
+  margin-bottom: 24px;
+
+  h2 {
+    @include section-title;
+  }
+
+  p {
+    color: $text-secondary;
+    font-size: 0.9rem;
+  }
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  align-items: start;
+
+  @include respond-to(desktop) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.formCard {
+  @include card;
+  padding: 28px;
+
+  @include respond-to(mobile) {
+    padding: 20px;
+  }
+}
+
+.cardTitle {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: $text-primary;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  svg {
+    color: $primary;
+    font-size: 22px;
+  }
+}
+
+.fieldGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.daysGrid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.dayChip {
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 0.82rem;
+  font-weight: 500;
+  border: 1.5px solid $border-color;
+  background: transparent;
+  color: $text-secondary;
+  cursor: pointer;
+  transition: all $transition-fast;
+
+  &:hover {
+    border-color: $primary;
+    color: $primary;
+  }
+
+  &.selected {
+    background: $primary;
+    border-color: $primary;
+    color: #fff;
+  }
+}
+
+.slotRow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+
+  .slotDash {
+    color: $text-muted;
+    font-weight: 500;
+  }
+
+  @include respond-to(mobile) {
+    gap: 8px;
+  }
+}
+
+.slotsList {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 4px;
+}
+
+.addSlotBtn {
+  align-self: flex-start;
+}
+
+.submitRow {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+// Current availability display
+.scheduleCard {
+  @include card;
+  padding: 28px;
+
+  @include respond-to(mobile) {
+    padding: 20px;
+  }
+}
+
+.emptyState {
+  text-align: center;
+  padding: 40px 20px;
+  color: $text-muted;
+
+  svg {
+    font-size: 48px;
+    margin-bottom: 12px;
+    opacity: 0.5;
+  }
+
+  p {
+    font-size: 0.9rem;
+  }
+}
+
+.dayBlock {
+  margin-bottom: 16px;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.dayLabel {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: $primary-dark;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 8px;
+  padding-bottom: 6px;
+  border-bottom: 2px solid $primary-bg;
+}
+
+.slotChip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: $success-bg;
+  color: $success;
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-size: 0.82rem;
+  font-weight: 500;
+  margin: 3px 4px 3px 0;
+
+  .removeSlot {
+    cursor: pointer;
+    opacity: 0.6;
+    font-size: 16px;
+    transition: opacity $transition-fast;
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+}

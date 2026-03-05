@@ -1,0 +1,96 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.layout {
+  display: flex;
+  min-height: 100vh;
+}
+
+.mainArea {
+  flex: 1;
+  margin-left: $sidebar-width;
+  display: flex;
+  flex-direction: column;
+  transition: margin-left $transition-normal;
+
+  @include respond-to(tablet) {
+    margin-left: 0;
+  }
+}
+
+.header {
+  height: $header-height;
+  background: $bg-card;
+  border-bottom: 1px solid $border-color;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 28px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+
+  @include respond-to(mobile) {
+    padding: 0 16px;
+  }
+}
+
+.headerLeft {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.menuButton {
+  display: none;
+  background: none;
+  border: none;
+  color: $text-primary;
+  padding: 6px;
+  border-radius: 8px;
+
+  &:hover {
+    background: $bg-body;
+  }
+
+  @include respond-to(tablet) {
+    display: flex;
+    align-items: center;
+  }
+}
+
+.pageTitle {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: $text-primary;
+
+  @include respond-to(mobile) {
+    font-size: 1rem;
+  }
+}
+
+.headerRight {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  .todayChip {
+    font-size: 0.82rem;
+    color: $text-secondary;
+    background: $bg-body;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-weight: 500;
+
+    @include respond-to(mobile) {
+      display: none;
+    }
+  }
+}
+
+.content {
+  flex: 1;
+  overflow-y: auto;
+  @include scrollbar-thin;
+}

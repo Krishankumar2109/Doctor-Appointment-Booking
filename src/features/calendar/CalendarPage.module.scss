@@ -1,0 +1,207 @@
+@use 'sass:color';
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.container {
+  @include page-container;
+}
+
+.pageHeader {
+  margin-bottom: 20px;
+
+  h2 {
+    @include section-title;
+  }
+
+  p {
+    color: $text-secondary;
+    font-size: 0.9rem;
+  }
+}
+
+.toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 20px;
+
+  @include respond-to(mobile) {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
+
+.toolbarLeft {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.weekNav {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+
+  .weekLabel {
+    font-weight: 600;
+    font-size: 0.95rem;
+    min-width: 200px;
+    text-align: center;
+    color: $text-primary;
+
+    @include respond-to(mobile) {
+      min-width: auto;
+      font-size: 0.85rem;
+    }
+  }
+}
+
+.legend {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+
+  @include respond-to(mobile) {
+    gap: 10px;
+    justify-content: center;
+  }
+}
+
+.legendItem {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: $text-secondary;
+
+  .dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+
+    &.available {
+      background: $success;
+    }
+    &.booked {
+      background: $warning;
+    }
+    &.blocked {
+      background: $blocked-color;
+    }
+  }
+}
+
+// Calendar Grid
+.calendarWrapper {
+  @include card;
+  overflow-x: auto;
+  @include scrollbar-thin;
+}
+
+.calendarGrid {
+  display: grid;
+  grid-template-columns: 90px repeat(7, 1fr);
+  min-width: 800px;
+}
+
+.headerCell {
+  padding: 14px 8px;
+  text-align: center;
+  font-weight: 700;
+  font-size: 0.82rem;
+  color: $text-primary;
+  background: $bg-body;
+  border-bottom: 2px solid $border-color;
+  position: sticky;
+  top: 0;
+  z-index: 2;
+
+  .headerDate {
+    display: block;
+    font-size: 0.72rem;
+    font-weight: 400;
+    color: $text-muted;
+    margin-top: 2px;
+  }
+
+  &.today {
+    background: $primary-bg;
+    color: $primary;
+  }
+}
+
+.timeLabel {
+  padding: 10px 12px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: $text-muted;
+  text-align: right;
+  border-right: 1px solid $border-color;
+  border-bottom: 1px solid color.adjust($border-color, $lightness: 4%);
+  background: $bg-card;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-end;
+}
+
+.cell {
+  border-right: 1px solid color.adjust($border-color, $lightness: 4%);
+  border-bottom: 1px solid color.adjust($border-color, $lightness: 4%);
+  min-height: 64px;
+  padding: 4px;
+  position: relative;
+  transition: background $transition-fast;
+
+  &:hover {
+    background: rgba($primary-bg, 0.3);
+  }
+}
+
+.slotCard {
+  padding: 5px 7px;
+  border-radius: 6px;
+  font-size: 0.7rem;
+  margin-bottom: 3px;
+  cursor: default;
+  line-height: 1.35;
+
+  &.available {
+    background: $success-bg;
+    color: $success;
+    border-left: 3px solid $success;
+  }
+
+  &.booked {
+    background: $warning-bg;
+    color: color.adjust($warning, $lightness: -8%);
+    border-left: 3px solid $warning;
+
+    .patientLabel {
+      font-weight: 700;
+      display: block;
+    }
+
+    .doctorLabel {
+      opacity: 0.8;
+      display: block;
+    }
+  }
+
+  &.blocked {
+    background: $blocked-bg;
+    color: $blocked-color;
+    border-left: 3px solid $blocked-color;
+    font-style: italic;
+  }
+}
+
+.emptyDay {
+  color: color.adjust($text-muted, $lightness: 15%);
+  font-size: 0.7rem;
+  padding: 4px;
+}
