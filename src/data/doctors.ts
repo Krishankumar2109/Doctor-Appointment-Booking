@@ -4,6 +4,7 @@ const doctors: Doctor[] = [
   { id: 1, name: 'Dr. Subramanya', specialization: 'Cardiology' },
   { id: 2, name: 'Dr. Sarah', specialization: 'Cardiology' },
   { id: 3, name: 'Dr. Krishna', specialization: 'Pediatrics' },
+  { id: 4, name: 'Krishan Kumar', specialization: 'Orthopedics' },
 ];
 
 export const DAYS_OF_WEEK = [

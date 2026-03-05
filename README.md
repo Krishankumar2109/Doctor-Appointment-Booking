@@ -54,6 +54,23 @@ src/
 ## Screenshots
 Attached in the mail
 
+### Want to add more doctors???
+add more doctors details in src/data/doctors.ts file 
+
+## Netlify Deployment Link
+Please Access here : https://doctor-appointment-booking-assingment.netlify.app/
+
+## How the App Works
+
+1. **Add Doctor Availability**  
+   Configure the available time slots for doctors.
+
+2. **Book an Appointment**  
+   Once availability is set, patients can book appointments through the **Book Appointment** tab.
+
+3. **View in Calendar**  
+   All confirmed appointments are displayed in the **Calendar View**, showing the patient name and scheduled time slot.
+
 
 
 
